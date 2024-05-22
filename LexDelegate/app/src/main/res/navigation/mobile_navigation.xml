@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.lexdelegate.ui.login.mainFragment"
+        android:label="Main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.lexdelegate.ui.login.LoginFragment"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_jobListFragment"
+            app:destination="@id/jobListFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="creds"
+            app:argType="com.example.lexdelegate.nameContract" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobDetailFragment"
+        android:name="com.example.lexdelegate.ui.login.jobDetailFragment"
+        android:label="Job Detail"
+        tools:layout="@layout/fragment_job_detail">
+        <action
+            android:id="@+id/action_jobDetailFragment_to_jobListFragment"
+            app:destination="@id/jobListFragment" />
+        <argument
+            android:name="creds3"
+            app:argType="com.example.lexdelegate.nameContract" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobListFragment"
+        android:name="com.example.lexdelegate.ui.login.JobsFragment"
+        android:label="Job List"
+        tools:layout="@layout/fragment_jobs">
+        <action
+            android:id="@+id/action_jobListFragment_to_jobCreate"
+            app:destination="@id/createJob" />
+        <action
+            android:id="@+id/action_jobListFragment_to_jobDetailFragment"
+            app:destination="@id/jobDetailFragment" />
+        <argument
+            android:name="creds"
+            app:argType="com.example.lexdelegate.nameContract" />
+        <argument
+            android:name="job"
+            app:argType="com.example.lexdelegate.JobItem" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createJob"
+        android:name="com.example.lexdelegate.ui.login.addJobFragment"
+        android:label="Create Job"
+        tools:layout="@layout/fragment_add_job">
+        <action
+            android:id="@+id/action_createJob_to_jobListFragment"
+            app:destination="@id/jobListFragment" />
+        <argument
+            android:name="creds2"
+            app:argType="com.example.lexdelegate.nameContract" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.lexdelegate.ui.login.SignupFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+</navigation>
